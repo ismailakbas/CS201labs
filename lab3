@@ -12,7 +12,7 @@ public class Main {
 
             int numCases = scanner.nextInt();
             scanner.nextLine(); // Consume newline
-            for (int i = 0; i < numCases; i++) {
+            for (int n = 0; n < numCases; n++) {
                 if (scanner.hasNextLine()) {
                     String polynomial1String = scanner.nextLine().trim();
                     if (scanner.hasNextLine()) {
@@ -20,8 +20,8 @@ public class Main {
                         if (scanner.hasNextLine()) {
                             char operation = scanner.nextLine().charAt(0);
 
-                            Polynomial polynomial1 = parsePolynomial(polynomial1String);
-                            Polynomial polynomial2 = parsePolynomial(polynomial2String);
+                            Polynomial polynomial1 = deletemptyspacesPolynomial(polynomial1String);
+                            Polynomial polynomial2 = deletemptyspacesPolynomial(polynomial2String);
 
                             Polynomial result = null;
                             switch (operation) {
@@ -49,9 +49,7 @@ public class Main {
             e.printStackTrace();
         }
     }
-
-
-    public static Polynomial parsePolynomial(String input) {
+    public static Polynomial deletemptyspacesPolynomial(String input) {
         Polynomial polynomial = new Polynomial();
         input = input.replaceAll("\\s", ""); // Remove all whitespace
         int index = 0;
@@ -121,6 +119,4 @@ public class Main {
         }
         return polynomial;
     }
-
-
 }
